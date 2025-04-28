@@ -4,14 +4,14 @@ from sqlalchemy import create_engine
 from geopy.distance import geodesic
 
 # Данные подключения к MS SQL Server
-servername = r'DESKTOP-J4V9VB5\SQLEXPRESS'
-dbname = 'TrafficSignsGIBDD'
+servername = r'DESKTOP-...\SQLEXPRESS'
+dbname = 'your_db_name'
 
 mssql_connection_string = f"mssql+pyodbc://@{servername}/{dbname}?trusted_connection=yes&driver=ODBC Driver 17 for SQL Server"
 
 mssql_engine = create_engine(mssql_connection_string)
 
-# Получение данных из таблицы Yekaterinburg_Locations_v2 в MS SQL Server
+# Получение данных из таблицы MS SQL Server
 def get_data_from_mssql(table_name):
     query = f"SELECT * FROM {table_name}"
     try:
@@ -25,9 +25,9 @@ print(gibdd_data.head())
 
 # Данные подключения к PostgreSQL
 pg_server = 'localhost'
-pg_database = 'TrafficSignsCommercial'
-pg_username = 'postgres'
-pg_password = 'admin'
+pg_database = 'your_db_name'
+pg_username = 'your_username'
+pg_password = 'your_password'
 
 # Строка подключения к PostgreSQL
 pg_connection_string = f"postgresql+psycopg2://{pg_username}:{pg_password}@{pg_server}/{pg_database}"
@@ -44,7 +44,7 @@ def get_data_from_pg(table_name):
         print(f"Ошибка при извлечении данных из PostgreSQL: {e}")
 
 # Получение данных из таблицы с коммерческими знаками
-commercial_data = get_data_from_pg('yekaterinburg_locations ')  # Имя таблицы
+commercial_data = get_data_from_pg('yekaterinburg_locations')  # Имя таблицы
 print(commercial_data.head())
 
 # Обработка гибдд данных
@@ -129,16 +129,6 @@ def merge_duplicates(df):
                 to_remove.append(j)
     df = df.drop(to_remove).reset_index(drop=True)
     return df
-                # combined_description = (str(df.loc[i, 'description']) + ' ' + str(df.loc[j, 'description'])).strip()
-    #             df.loc[i, 'description'] = combined_description
-    #             df.loc[i, 'source'] = 'merged'
-    #             if pd.isnull(df.loc[i, 'gibdd_id']):
-    #                 df.loc[i, 'gibdd_id'] = df.loc[j, 'gibdd_id']
-    #             if pd.isnull(df.loc[i, 'commercial_id']):
-    #                 df.loc[i, 'commercial_id'] = df.loc[j, 'commercial_id']
-    #             to_remove.append(j)
-    # df = df.drop(to_remove).reset_index(drop=True)
-    # return df
 
 merged_final = merge_duplicates(merged)
 
