@@ -8,9 +8,9 @@ CORS(app)  # Разрешаем CORS для всех маршрутов
 # Подключение к PostgreSQL
 # Данные подключения к PostgreSQL
 pg_server = 'localhost'
-pg_database = 'TrafficSignsCommercial'
-pg_username = 'postgres'
-pg_password = 'admin'
+pg_database = 'your_db_name'
+pg_username = 'your_username'
+pg_password = 'your_password'
 
 # Строка подключения к PostgreSQL
 pg_connection_string = f"postgresql+psycopg2://{pg_username}:{pg_password}@{pg_server}/{pg_database}"
