@@ -17,7 +17,7 @@ TrafficSigns_project/
 │  
 ├── backend/               # Бэкенд часть (Python + Flask)  
 │   ├── server.py          # API для получения данных  
-│   ├── db_connections.py  # Проверка подключения к базам данных 
+│   ├── db_connections.py  # Проверка подключения к базам данных  
 │   └── etl.py             # Логика слияния данных из баз  
 │  
 ├── road-signs-map/        # Фронтенд часть (React + Leaflet)  
