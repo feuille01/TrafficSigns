@@ -89,7 +89,7 @@ TrafficSigns_project/
 cd backend
 python server.py
 
-Сервер будет доступен по адресу: http://localhost:3000.
+Сервер будет доступен по адресу: http://localhost:5000.
 
 ### 4. Запуск фронта
 
